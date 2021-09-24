@@ -9,7 +9,7 @@ ___
   remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
 </pre>
 
-해결 방법은 다음 `깃 ssh 인증`, `깃 토큰 인증` 두 가지 방법중 SSH 인증방식을 사용하였다.
+해결 방법은 다음 `깃 ssh 인증`, `깃 토큰 인증` 두 가지 방법중 *SSH 인증방식* 을 사용하였다.
 
 이유는 
 1. RSA 방식의 (**비밀키**, **개인키**) 높은 보안성 
@@ -24,9 +24,9 @@ ___
 <!---->
 >    ssh-keygen -t ed25519 -C "yousi7@naver.com"
 * key 를 생성하는 동안 아무것도 입력하지말고 엔터키를 두번 입력.
-
+ 
 #### 2. 키 생성 완료
-`ls -al` 커맨드 입력시 .ssh 파일 생성 확인 가능  
+`ls -al` 커맨드 입력시 홈 디렉터리 내부에 *.ssh* 파일 생성 확인 가능  
 `cd .ssh` 입력 하여 진입시 파일 생성 모습 
 
 > <img width="504" alt="스크린샷 2021-09-23 오후 8 04 04" src="https://user-images.githubusercontent.com/79305451/134496563-5467a10c-43ce-4cb9-bae3-5ca5eaaab411.png">.   
@@ -43,3 +43,23 @@ ___
     settings  ->  SSH and GPG keys  ->  New SSH key
 에 위치한 [해당경로](https://github.com/settings/keys) 로 접근하여 공개키 값 입력하여 주면 등록이 완료된다.
 
+<br/>
+
+___
+
+### 몽고 DB 사용 이유
+
+- NoSQL 데이터 베이스 이다
+- 네이티브 데이터로 비동기 처리에 유리하다
+
+RDBMS
+- 중복 ❌ (중복이 허용되지 않음)
+- 데이터의 관계가 설정되어 있어 데이터의 변경이 쉬움
+- 
+
+
+MongoDB(NoSQL)
+- 데이터를 조회하는 점에서 강점 보유
+  - 관계형과 달리 테이블 하나만 조회 하기 때문에 편리
+  - 많은 사용자가 한번에 사용 할 때 유리함
+- 하지만 데이터의 일관성을 유지하기 어려움 (수정시 어려움)
