@@ -74,6 +74,12 @@ MongoDB(NoSQL)
 `RDBMS` 에도 `R2DBC` 라는 라이브러리를 사용하면 사용이 가능하다고 한다
 
 도커 사용을 통해 작업 환경 준비
-> docker run -p 27017:27017 --name chatDB -d mongo
+> docker run --name mongoDB -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=seung -e MONGO_INITDB_ROOT_PASSWORD=1234 -d mongo
 
+> docker exec -it mongoDB bash
+
+---
+
+http 방식은 요청이 오면 데이터를 모아 응답을 하고 신호를 끊는 방식.    
+SSE 방식은 요청은 닫히지만 응답은 연결되어 있어 데이터를 계속 교류한다. (@Tailable 형식을 통해 데이터가 흘러들어옴, Flux 공부 필요) 
 
