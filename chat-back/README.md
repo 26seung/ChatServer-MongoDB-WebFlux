@@ -78,6 +78,17 @@ MongoDB(NoSQL)
 
 > docker exec -it mongoDB bash
 
+몽고 DB 간단 명령어
+use Chat;
+show databases , show dbs
+show collections;
+db.createCollection("test")
+db.dropDatabase();
+
+db.test.find();
+db.test.find({"sender":"tester1"});
+
+
 ---
 
 http 방식은 요청이 오면 데이터를 모아 응답을 하고 신호를 끊는 방식.    
