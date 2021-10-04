@@ -63,6 +63,7 @@ MongoDB(NoSQL)
   - 관계형과 달리 테이블 하나만 조회 하기 때문에 편리
   - 많은 사용자가 한번에 사용 할 때 유리함
 - 하지만 데이터의 일관성을 유지하기 어려움 (수정시 어려움)
+- 복잡한 JOIN 이 없다.
 
 ---
 
@@ -78,19 +79,40 @@ MongoDB(NoSQL)
 
 > docker exec -it mongoDB bash
 
-몽고 DB 간단 명령어
-use Chat;
-show databases , show dbs
-show collections;
-db.createCollection("test")
-db.dropDatabase();
+도커 몽고에 접속하여 `mongo` 입력시 접속이 되지만 아직 사용이 가능한 상태는 아니다  
+`mongo -u seung -p` 기입하면 패스워드 입력하여 몽고 디비 사용이 가능해 진다.
 
-db.test.find();
-db.test.find({"sender":"tester1"});
+query 관련하여 사이즈 에러 발생시 컬랙션 의 사이즈를 키워주자  
+`db.runCommand({convertToCapped: 'chat', size: 8192})` 기입하여 해결
+#### 몽고 DB 간단 명령어 ---
+
+`db` : 현재 사용중인 데이터 베이스를 확인  
+`show dbs` : 내가 만든 데이터 베이스 리스트를 확인  
+`show collections` : 컬렉션 목록 확인  
+<br>
+`use chatDB` : 선택 데이터 베이스 사용  
+`db.chatDB.save({""});` : 사용 DB에 내용 삽입  
+`db.chatDB.find()` : 저장되어 있는 내용 확인  
+`db.chatDB.find().pretty()` : JSON 형태의 데이터를 이쁘게 볼 수 있음  
+
 
 
 ---
 
 http 방식은 요청이 오면 데이터를 모아 응답을 하고 신호를 끊는 방식.    
 SSE 방식은 요청은 닫히지만 응답은 연결되어 있어 데이터를 계속 교류한다. (@Tailable 형식을 통해 데이터가 흘러들어옴, Flux 공부 필요) 
+---
+###[MongoDB]
+  
+####소개  
+몽고 디비는 오픈소스 문서지향적 Cross-platform 데이터 베이스 이며, NoSQL 데이터 베이스중 높은 인지도를 가지고 있는 데이터 베이스입니다.
 
+####NoSQL
+  
+####  Collection  ?
+  Collection 은 몽고디비 의 Document 의 그룹이다. Document 들이 Collection 내부에 위치하고 있으며,
+  RDBS 의 테이블과 비슷한 개념이지만 스키마를 따로 가지고 있지는 않는다
+  
+####  Database ?
+  Database 는 Collection 의 물리적인 컨테이너 개념이다. Database 는 파일시스템에 여러 파일로 저장된다
+  
