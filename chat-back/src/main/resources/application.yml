@@ -1,6 +1,12 @@
+server:
+  port: 8080
 spring:
   data:
     mongodb:
+#      uri: mongodb://localhost:27017/chatDB
       host: localhost
       port: 27017
       database: chatdb
+#      username: seung
+#      password: 1234
+#      authentication-database: admin
