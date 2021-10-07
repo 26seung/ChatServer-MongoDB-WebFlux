@@ -10,4 +10,8 @@ public interface ChatRepository extends ReactiveMongoRepository<Chat,String> {
     @Tailable       //  커서를 안닫고 계속 유지 하는 어노테이션
     @Query("{sender: ?0, receiver: ?1}")
     Flux<Chat>mFindBySender(String sender, String receiver);
+
+    @Tailable
+    @Query("{roomNum: ?0}")
+    Flux<Chat>mFindByRoomNum(Integer roomNum);
 }
