@@ -57,6 +57,13 @@ RDBMS
 - 데이터의 관계가 설정되어 있어 데이터의 변경이 쉬움
 - 
 
+NoSQL
+- RDBMS (관계형 데이터)와 달리 데이터 간의 관계를 정의 하지 않는다
+  - 관계형은 Foreign Key 를 활용하여 관계를 설정하고 Join 등 연산을 하지만 NoSQL은 관계를 정의하지 않기 때문에 Join도 불가능하다 
+- RDBMS 에 비해 훨씬 더 대용량의 데이터를 저장할 수 있다.
+  - 관계형의 복잡도와 용량 한계를 극복하기 위한 목적으로 등장한 만큼, 페타바이트급의 대용량 데이터를 저장할 수 있다.
+- 분산형 구조
+- 고정되지 않은 테이블 스키마를 가진다
 
 MongoDB(NoSQL)
 - 데이터를 조회하는 점에서 강점 보유
@@ -75,7 +82,11 @@ MongoDB(NoSQL)
 `RDBMS` 에도 `R2DBC` 라는 라이브러리를 사용하면 사용이 가능하다고 한다
 
 도커 사용을 통해 작업 환경 준비
-> docker run --name mongoDB -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=seung -e MONGO_INITDB_ROOT_PASSWORD=1234 -d mongo
+> docker run --name mongoDB -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=seung -e MONGO_INITDB_ROOT_PASSWORD=1234 -d mongo  
+
+계정 생성하여 사용시 접속 하는데에 에러를 잡지 못해 환경설정 없이 그냥 연결 하여 사용하였음
+
+> docker run --name mongoDB -p 27017:27017 -d mongo:latest  
 
 > docker exec -it mongoDB bash
 
